@@ -31,6 +31,7 @@ modules:
       # Install modem-manager
       - modem-manager-gui
       - modem-manager-gui-cm-NetworkManager
+      - zed
     remove:
       # Remove t480s incompatible fprint
       - fprintd
@@ -47,7 +48,6 @@ modules:
     user: # Also add Flathub user repo, but no user packages
       install:
         - app.zen_browser.zen
-        - dev.zed.Zed
 
   - type: systemd
     # this example disables automatic flatpak updates and enables a custom service unit for all users
