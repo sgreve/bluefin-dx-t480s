@@ -25,8 +25,8 @@ modules:
       - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-41/pgdev-ghostty-fedora-%OS_VERSION%.repo
     install:
       - starship
-      - open-fprintd
       # Install t480s compatible fprint
+      - open-fprintd
       - fprintd-clients
       - fprintd-clients-pam
       - python3-validity
@@ -44,44 +44,45 @@ modules:
       - fprintd-pam
 
   - type: default-flatpaks
-    notify: true # Send notification after install/uninstall is finished (true/false)
-    system:
-      # If no repo information is specified, Flathub will be used by default
-      install:
-        - org.gnome.Loupe
-        - io.github.dvlv.boxbuddyrs
-        - com.github.rafostar.Clapper
-        - org.fedoraproject.MediaWriter
-        - com.github.tchx84.Flatseal
-        - io.github.flattool.Ignition
-        - io.github.flattool.Warehouse
-        - org.gnome.baobab
-        - org.gnome.Calculator
-        - org.gnome.Calendar
-        - org.gnome.Characters
-        - org.gnome.clocks
-        - org.gnome.Connections
-        - org.gnome.Contacts
-        - org.gnome.DejaDup
-        - org.gnome.Papers
-        - com.mattjakeman.ExtensionManager
-        - org.gnome.FileRoller
-        - org.gnome.font-viewer
-        - org.gnome.Logs
-        - org.gnome.Loupe
-        - org.gnome.Maps
-        - org.gnome.NautilusPreviewer
-        - org.gnome.World.PikaBackup
-        - org.gnome.TextEditor
-        - org.gnome.Weather
-        - io.missioncenter.MissionCenter
-        - io.podman_desktop.PodmanDesktop
-      remove:
-        - org.gnome.eog
-    user: # Also add Flathub user repo, but no user packages
-      install:
-        - app.zen_browser.zen
-        - dev.zed.Zed
+    configurations:
+      - notify: true # Send notification after install/uninstall is finished (true/false)
+        scope: system
+        install:
+          - org.gnome.Loupe
+          - io.github.dvlv.boxbuddyrs
+          - com.github.rafostar.Clapper
+          - org.fedoraproject.MediaWriter
+          - com.github.tchx84.Flatseal
+          - io.github.flattool.Ignition
+          - io.github.flattool.Warehouse
+          - org.gnome.baobab
+          - org.gnome.Calculator
+          - org.gnome.Calendar
+          - org.gnome.Characters
+          - org.gnome.clocks
+          - org.gnome.Connections
+          - org.gnome.Contacts
+          - org.gnome.DejaDup
+          - org.gnome.Papers
+          - com.mattjakeman.ExtensionManager
+          - org.gnome.FileRoller
+          - org.gnome.font-viewer
+          - org.gnome.Logs
+          - org.gnome.Loupe
+          - org.gnome.Maps
+          - org.gnome.NautilusPreviewer
+          - org.gnome.World.PikaBackup
+          - org.gnome.TextEditor
+          - org.gnome.Weather
+          - io.missioncenter.MissionCenter
+          - io.podman_desktop.PodmanDesktop
+        remove:
+          - org.gnome.eog
+      - notify: true
+        scope: user # Also add Flathub user repo, but no user packages
+        install:
+          - app.zen_browser.zen
+          - dev.zed.Zed
 
   - type: systemd
     # this example disables automatic flatpak updates and enables a custom service unit for all users
