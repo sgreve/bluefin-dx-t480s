@@ -96,7 +96,6 @@ modules:
       - Blur my Shell
       - Caffeine
       - Tiling Shell
-      - Wiggle
 
   - type: justfiles
 
